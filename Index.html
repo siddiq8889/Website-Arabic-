@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الدال علی الخیر</title>
+  <style>
+    body {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      direction: rtl;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #2d6a4f;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 15px 0;
+      border: 2px solid #2d6a4f;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+    .word-box {
+      background-color: #e9f5ec;
+      border: 1px solid #c4dfd7;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 10px;
+    }
+    .highlight {
+      color: #1d3557;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>الدال علی الخیر</h1>
+    <input type="text" id="searchInput" placeholder="عربی لفظ تلاش کریں...">
+    <div id="resultContainer"></div>
+  </div>  <script>
+    const words = {
+      "علم": {
+        "لغت": "جاننا، پہچاننا",
+        "نحو": "اسم، مذکر، معرفہ",
+        "صرف": "ثلاثی مجرد، باب علم یعلم",
+        "اعراب": "مرفوع، مبتدا",
+        "بلاغت": "علم ایک جامع مفہوم رکھتا ہے جو قرآن میں کثرت سے آیا ہے",
+        "قرآن": "274 مرتبہ آیا، جیسے 'یرفع الله الذین آمنوا منکم والذین أوتوا العلم درجات' (المجادلة: 11)"
+      },
+      "کتاب": {
+        "لغت": "لکھا ہوا، تحریر",
+        "نحو": "اسم، مؤنث، معرفہ",
+        "صرف": "مصدر، ثلاثی مزید فیہ",
+        "اعراب": "منصوب، مفعول",
+        "بلاغت": "کتاب کا مفہوم قرآن و شریعت پر بھی بولا جاتا ہے",
+        "قرآن": "261 مرتبہ آیا، جیسے 'ذٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ' (البقرۃ:2)"
+      }
+    };
+
+    const searchInput = document.getElementById('searchInput');
+    const resultContainer = document.getElementById('resultContainer');
+
+    searchInput.addEventListener('input', function () {
+      const query = this.value.trim();
+      resultContainer.innerHTML = '';
+
+      if (query && words[query]) {
+        const data = words[query];
+        let html = '<div class="word-box">';
+        html += `<p><span class="highlight">لغت:</span> ${data.لغت}</p>`;
+        html += `<p><span class="highlight">نحو:</span> ${data.نحو}</p>`;
+        html += `<p><span class="highlight">صرف:</span> ${data.صرف}</p>`;
+        html += `<p><span class="highlight">اعراب:</span> ${data.اعراب}</p>`;
+        html += `<p><span class="highlight">بلاغت:</span> ${data.بلاغت}</p>`;
+        html += `<p><span class="highlight">قرآن:</span> ${data.قرآن}</p>`;
+        html += '</div>';
+        resultContainer.innerHTML = html;
+      }
+    });
+  </script></body>
+</html>
